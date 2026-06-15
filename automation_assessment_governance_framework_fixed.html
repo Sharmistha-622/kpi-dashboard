@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automation Assessment, Approval &amp; Governance Framework</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<style>
+:root{
+  --font-sans: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --color-background-primary: #ffffff;
+  --color-background-secondary: #F7F8FA;
+  --color-text-primary: #1A1A1A;
+  --color-text-secondary: #4A4A4A;
+  --color-text-tertiary: #8A8A8A;
+  --color-border-tertiary: #E0E0E0;
+  --border-radius-lg: 12px;
+  --border-radius-md: 8px;
+}
+body{font-family:var(--font-sans);background:#F0F2F5;padding:24px}
+
+</style>
+</head>
+<body>
+
+<h2 class="sr-only">Interactive flowchart of the Automation Assessment, Approval and Governance Framework showing four stages: Discovery, Feasibility Assessment, Build Test Validate, and Deploy Monitor Optimize, separated by three approval gates.</h2>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.fw{font-family:var(--font-sans);padding:1rem 0}
+.fw-title{font-size:16px;font-weight:500;color:var(--color-text-primary);margin-bottom:2px}
+.fw-sub{font-size:12px;color:var(--color-text-tertiary);margin-bottom:20px}
+
+/* STAGE CARDS */
+.stages{display:grid;grid-template-columns:1fr 40px 1fr 40px 1fr 40px 1fr;gap:0;align-items:start;margin-bottom:24px}
+.stage{background:var(--color-background-primary);border:2px solid;border-radius:var(--border-radius-lg);padding:14px 14px 12px;cursor:pointer;transition:all .18s;position:relative}
+.stage:hover{transform:translateY(-2px)}
+.stage.s0{border-color:#185FA5}
+.stage.s1{border-color:#0F6E56}
+.stage.s2{border-color:#534AB7}
+.stage.s3{border-color:#BA7517}
+.stage-num{font-size:10px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;margin-bottom:6px}
+.s0 .stage-num{color:#185FA5}
+.s1 .stage-num{color:#0F6E56}
+.s2 .stage-num{color:#534AB7}
+.s3 .stage-num{color:#BA7517}
+.stage-title{font-size:13px;font-weight:500;margin-bottom:8px}
+.s0 .stage-title{color:#042C53}
+.s1 .stage-title{color:#04342C}
+.s2 .stage-title{color:#26215C}
+.s3 .stage-title{color:#412402}
+.stage-icon{font-size:26px;margin-bottom:8px;display:block}
+.stage-items{list-style:none;padding:0}
+.stage-items li{font-size:11px;color:var(--color-text-secondary);padding:3px 0;border-bottom:0.5px solid var(--color-border-tertiary);display:flex;align-items:flex-start;gap:5px;line-height:1.4}
+.stage-items li:last-child{border-bottom:none}
+.stage-items li::before{content:"•";flex-shrink:0;margin-top:1px}
+.s0 .stage-items li::before{color:#185FA5}
+.s1 .stage-items li::before{color:#0F6E56}
+.s2 .stage-items li::before{color:#534AB7}
+.s3 .stage-items li::before{color:#BA7517}
+
+/* OUTCOME BOX */
+.outcome{margin-top:10px;padding:8px 10px;border-radius:var(--border-radius-md);border:1.5px solid;display:flex;align-items:center;gap:6px;font-size:11px;font-weight:500}
+.s0 .outcome{background:#E6F1FB;border-color:#185FA5;color:#042C53}
+.s1 .outcome{background:#E1F5EE;border-color:#1D9E75;color:#04342C}
+.s2 .outcome{background:#EEEDFE;border-color:#534AB7;color:#26215C}
+.s3 .outcome{background:#FAEEDA;border-color:#BA7517;color:#412402}
+
+/* GATE CONNECTOR */
+.gate-col{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:44px;gap:4px}
+.gate-arrow{font-size:18px;color:var(--color-text-tertiary)}
+.gate-diamond{width:36px;height:36px;transform:rotate(45deg);border:2px solid;border-radius:3px;display:flex;align-items:center;justify-content:center}
+.gate-diamond span{transform:rotate(-45deg);font-size:9px;font-weight:600;text-align:center;line-height:1.1}
+.g0 .gate-diamond{border-color:#3B6D11;background:#EAF3DE;color:#173404}
+.g1 .gate-diamond{border-color:#BA7517;background:#FAEEDA;color:#412402}
+.g2 .gate-diamond{border-color:#26215C;background:#EEEDFE;color:#26215C}
+.gate-label{font-size:9px;font-weight:500;text-align:center;margin-top:4px;line-height:1.3}
+.g0 .gate-label{color:#3B6D11}
+.g1 .gate-label{color:#BA7517}
+.g2 .gate-label{color:#26215C}
+
+/* REQUEST BOX */
+.req-row{display:flex;align-items:center;gap:10px;margin-bottom:16px;padding:10px 14px;background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md)}
+.req-icon{width:38px;height:38px;border-radius:50%;background:#E6F1FB;border:2px solid #185FA5;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.req-body{flex:1}
+.req-body strong{font-size:13px;font-weight:500;color:var(--color-text-primary);display:block}
+.req-body span{font-size:11px;color:var(--color-text-tertiary)}
+.req-arrow{font-size:20px;color:var(--color-text-tertiary)}
+
+/* GOVERNANCE PRINCIPLES */
+.gov{background:var(--color-background-secondary);border:1.5px solid #BA7517;border-radius:var(--border-radius-lg);padding:14px 16px;margin-top:6px}
+.gov-title{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.07em;color:#BA7517;margin-bottom:10px}
+.gov-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.gov-item{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:8px 10px;display:flex;gap:7px;align-items:flex-start}
+.gov-item-icon{font-size:16px;flex-shrink:0;margin-top:1px}
+.gov-item p{font-size:11px;color:var(--color-text-secondary);line-height:1.45}
+
+/* DETAIL PANEL */
+.detail{background:var(--color-background-primary);border:2px solid;border-radius:var(--border-radius-lg);padding:16px 18px;margin-bottom:16px;display:none}
+.detail.open{display:block}
+.detail.d0{border-color:#185FA5}
+.detail.d1{border-color:#0F6E56}
+.detail.d2{border-color:#534AB7}
+.detail.d3{border-color:#BA7517}
+.detail-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.detail-head h3{font-size:14px;font-weight:500}
+.d0 .detail-head h3{color:#042C53}
+.d1 .detail-head h3{color:#04342C}
+.d2 .detail-head h3{color:#26215C}
+.d3 .detail-head h3{color:#412402}
+.close-btn{font-size:18px;cursor:pointer;color:var(--color-text-tertiary);border:none;background:none;padding:0 4px}
+.detail-2col{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.detail-col h4{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--color-text-tertiary);margin-bottom:6px}
+.dtag{display:inline-block;font-size:11px;padding:3px 8px;border-radius:20px;margin:2px;background:var(--color-background-secondary);color:var(--color-text-secondary);border:0.5px solid var(--color-border-tertiary)}
+.d0 .dtag-accent{background:#E6F1FB;border-color:#185FA5;color:#042C53}
+.d1 .dtag-accent{background:#E1F5EE;border-color:#1D9E75;color:#04342C}
+.d2 .dtag-accent{background:#EEEDFE;border-color:#534AB7;color:#26215C}
+.d3 .dtag-accent{background:#FAEEDA;border-color:#BA7517;color:#412402}
+.hint{font-size:11px;color:var(--color-text-tertiary);text-align:center;margin-bottom:10px}
+</style>
+
+<div class="fw">
+<div class="fw-title"><i class="ti ti-circuit-cell" style="font-size:17px;vertical-align:-3px;margin-right:6px;color:#534AB7" aria-hidden="true"></i>Automation assessment, approval &amp; governance framework</div>
+<div class="fw-sub">From request to value realisation &nbsp;·&nbsp; Click any stage to explore in depth</div>
+
+<!-- AUTOMATION REQUEST -->
+<div class="req-row">
+  <div class="req-icon">📝</div>
+  <div class="req-body">
+    <strong>Automation request</strong>
+    <span>Idea or opportunity submitted by any team member</span>
+  </div>
+  <div class="req-arrow"><i class="ti ti-arrow-right" aria-hidden="true"></i></div>
+  <div style="font-size:12px;color:var(--color-text-tertiary);max-width:260px;line-height:1.5">Before any work begins, the idea enters a structured pipeline. Every automation must pass through 3 approval gates before going live.</div>
+</div>
+
+<p class="hint">↓&nbsp; Click any stage card to open its detailed breakdown</p>
+
+<!-- STAGE + GATE GRID -->
+<div class="stages">
+  <!-- Stage 1 -->
+  <div class="stage s0" onclick="toggleDetail(0)" tabindex="0" role="button" aria-expanded="false" aria-label="Open stage 1 discovery details">
+    <span class="stage-icon">🔍</span>
+    <div class="stage-num">Stage 1</div>
+    <div class="stage-title">Discovery</div>
+    <ul class="stage-items">
+      <li>Define objective</li>
+      <li>Map current process</li>
+      <li>Assess readiness</li>
+      <li>Identify opportunities</li>
+      <li>Estimate current effort</li>
+      <li>Expected benefits</li>
+    </ul>
+    <div class="outcome"><i class="ti ti-clipboard-check" style="font-size:14px" aria-hidden="true"></i>Approved for discovery</div>
+  </div>
+
+  <!-- Gate 1 -->
+  <div class="gate-col g0">
+    <div class="gate-arrow"><i class="ti ti-arrow-right" aria-hidden="true"></i></div>
+    <div class="gate-diamond"><span>G1</span></div>
+    <div class="gate-label">Discovery<br>approval</div>
+  </div>
+
+  <!-- Stage 2 -->
+  <div class="stage s1" onclick="toggleDetail(1)" tabindex="0" role="button" aria-expanded="false" aria-label="Open stage 2 feasibility details">
+    <span class="stage-icon">📈</span>
+    <div class="stage-num">Stage 2</div>
+    <div class="stage-title">Feasibility assessment</div>
+    <ul class="stage-items">
+      <li>Analyse data &amp; inputs</li>
+      <li>Evaluate risks &amp; constraints</li>
+      <li>Design future workflow</li>
+      <li>Cost-benefit &amp; ROI analysis</li>
+      <li>Select tools &amp; licences</li>
+      <li>Solution recommendation</li>
+    </ul>
+    <div class="outcome"><i class="ti ti-clipboard-check" style="font-size:14px" aria-hidden="true"></i>Approved to build</div>
+  </div>
+
+  <!-- Gate 2 -->
+  <div class="gate-col g1">
+    <div class="gate-arrow"><i class="ti ti-arrow-right" aria-hidden="true"></i></div>
+    <div class="gate-diamond"><span>G2</span></div>
+    <div class="gate-label">Build<br>approval</div>
+  </div>
+
+  <!-- Stage 3 -->
+  <div class="stage s2" onclick="toggleDetail(2)" tabindex="0" role="button" aria-expanded="false" aria-label="Open stage 3 build and test details">
+    <span class="stage-icon">⚙️</span>
+    <div class="stage-num">Stage 3</div>
+    <div class="stage-title">Build, test &amp; validate</div>
+    <ul class="stage-items">
+      <li>Build automation</li>
+      <li>Configure integrations</li>
+      <li>Design exception handling</li>
+      <li>Test (Unit, E2E, UAT)</li>
+      <li>Validate &amp; document</li>
+      <li>Prepare rollback plan</li>
+    </ul>
+    <div class="outcome"><i class="ti ti-clipboard-check" style="font-size:14px" aria-hidden="true"></i>Approved for production</div>
+  </div>
+
+  <!-- Gate 3 -->
+  <div class="gate-col g2">
+    <div class="gate-arrow"><i class="ti ti-arrow-right" aria-hidden="true"></i></div>
+    <div class="gate-diamond"><span>G3</span></div>
+    <div class="gate-label">Production<br>sign-off</div>
+  </div>
+
+  <!-- Stage 4 -->
+  <div class="stage s3" onclick="toggleDetail(3)" tabindex="0" role="button" aria-expanded="false" aria-label="Open stage 4 deploy and monitor details">
+    <span class="stage-icon">📈</span>
+    <div class="stage-num">Stage 4</div>
+    <div class="stage-title">Deploy, monitor &amp; optimise</div>
+    <ul class="stage-items">
+      <li>Deploy to production</li>
+      <li>Monitor performance</li>
+      <li>Track metrics &amp; errors</li>
+      <li>Measure results vs goals</li>
+      <li>Optimise &amp; improve</li>
+      <li>Review periodically</li>
+    </ul>
+    <div class="outcome"><i class="ti ti-chart-bar" style="font-size:14px" aria-hidden="true"></i>Value realised</div>
+  </div>
+</div>
+
+<!-- DETAIL PANELS (toggled on click) -->
+<div class="detail d0" id="d0">
+  <div class="detail-head">
+    <h3><i class="ti ti-search" style="font-size:16px;vertical-align:-2px;margin-right:6px;color:#185FA5" aria-hidden="true"></i>Stage 1 &mdash; Discovery deep dive</h3>
+    <button class="close-btn" onclick="closeDetail(0)" aria-label="Close detail panel">&times;</button>
+  </div>
+  <div class="detail-2col">
+    <div>
+      <h4>What you produce</h4>
+      <span class="dtag dtag-accent">Process map (as-is)</span>
+      <span class="dtag dtag-accent">Opportunity assessment</span>
+      <span class="dtag dtag-accent">Effort estimate</span>
+      <span class="dtag dtag-accent">Benefits projection</span>
+    </div>
+    <div>
+      <h4>Who is involved</h4>
+      <span class="dtag">Process owner</span>
+      <span class="dtag">Operations lead</span>
+      <span class="dtag">Subject matter expert</span>
+    </div>
+    <div>
+      <h4>Gate 1 checklist &mdash; must pass to proceed</h4>
+      <span class="dtag dtag-accent">✓ Objective clearly defined</span>
+      <span class="dtag dtag-accent">✓ Process mapped end-to-end</span>
+      <span class="dtag dtag-accent">✓ Business case exists</span>
+      <span class="dtag dtag-accent">✓ Business owner assigned</span>
+    </div>
+    <div>
+      <h4>Common blockers at this stage</h4>
+      <span class="dtag">Process not documented</span>
+      <span class="dtag">No clear owner</span>
+      <span class="dtag">Benefits not measurable</span>
+      <span class="dtag">Stakeholder unavailable</span>
+    </div>
+  </div>
+</div>
+
+<div class="detail d1" id="d1">
+  <div class="detail-head">
+    <h3><i class="ti ti-chart-dots" style="font-size:16px;vertical-align:-2px;margin-right:6px;color:#0F6E56" aria-hidden="true"></i>Stage 2 &mdash; Feasibility assessment deep dive</h3>
+    <button class="close-btn" onclick="closeDetail(1)" aria-label="Close detail panel">&times;</button>
+  </div>
+  <div class="detail-2col">
+    <div>
+      <h4>What you produce</h4>
+      <span class="dtag dtag-accent">Future-state workflow</span>
+      <span class="dtag dtag-accent">ROI analysis document</span>
+      <span class="dtag dtag-accent">Tool selection report</span>
+      <span class="dtag dtag-accent">Risk register</span>
+    </div>
+    <div>
+      <h4>Who is involved</h4>
+      <span class="dtag">Automation analyst</span>
+      <span class="dtag">IT / tech lead</span>
+      <span class="dtag">Finance (for ROI)</span>
+      <span class="dtag">Compliance</span>
+    </div>
+    <div>
+      <h4>Gate 2 checklist &mdash; must pass to proceed</h4>
+      <span class="dtag dtag-accent">✓ ROI positive &amp; approved</span>
+      <span class="dtag dtag-accent">✓ Tool selected &amp; licensed</span>
+      <span class="dtag dtag-accent">✓ Risks assessed &amp; mitigated</span>
+      <span class="dtag dtag-accent">✓ Future workflow signed off</span>
+    </div>
+    <div>
+      <h4>Common blockers at this stage</h4>
+      <span class="dtag">ROI difficult to quantify</span>
+      <span class="dtag">Tool licensing delays</span>
+      <span class="dtag">Data access issues</span>
+      <span class="dtag">Approval bottleneck</span>
+    </div>
+  </div>
+</div>
+
+<div class="detail d2" id="d2">
+  <div class="detail-head">
+    <h3><i class="ti ti-settings" style="font-size:16px;vertical-align:-2px;margin-right:6px;color:#534AB7" aria-hidden="true"></i>Stage 3 &mdash; Build, test &amp; validate deep dive</h3>
+    <button class="close-btn" onclick="closeDetail(2)" aria-label="Close detail panel">&times;</button>
+  </div>
+  <div class="detail-2col">
+    <div>
+      <h4>What you produce</h4>
+      <span class="dtag dtag-accent">Working automation</span>
+      <span class="dtag dtag-accent">Test results (Unit/E2E/UAT)</span>
+      <span class="dtag dtag-accent">Exception handling docs</span>
+      <span class="dtag dtag-accent">Rollback plan</span>
+    </div>
+    <div>
+      <h4>Who is involved</h4>
+      <span class="dtag">Developer / RPA engineer</span>
+      <span class="dtag">QA tester</span>
+      <span class="dtag">Business UAT team</span>
+      <span class="dtag">Security reviewer</span>
+    </div>
+    <div>
+      <h4>Gate 3 checklist &mdash; must pass to proceed</h4>
+      <span class="dtag dtag-accent">✓ All tests passed (Unit/E2E/UAT)</span>
+      <span class="dtag dtag-accent">✓ Exception handling validated</span>
+      <span class="dtag dtag-accent">✓ Rollback plan documented</span>
+      <span class="dtag dtag-accent">✓ Security sign-off obtained</span>
+    </div>
+    <div>
+      <h4>Common blockers at this stage</h4>
+      <span class="dtag">UAT stakeholder unavailable</span>
+      <span class="dtag">Integration failures</span>
+      <span class="dtag">Changing requirements</span>
+      <span class="dtag">Missing test environment</span>
+    </div>
+  </div>
+</div>
+
+<div class="detail d3" id="d3">
+  <div class="detail-head">
+    <h3><i class="ti ti-rocket" style="font-size:16px;vertical-align:-2px;margin-right:6px;color:#BA7517" aria-hidden="true"></i>Stage 4 &mdash; Deploy, monitor &amp; optimise deep dive</h3>
+    <button class="close-btn" onclick="closeDetail(3)" aria-label="Close detail panel">&times;</button>
+  </div>
+  <div class="detail-2col">
+    <div>
+      <h4>What you produce</h4>
+      <span class="dtag dtag-accent">Live automation in production</span>
+      <span class="dtag dtag-accent">KPI monitoring dashboard</span>
+      <span class="dtag dtag-accent">Periodic review report</span>
+      <span class="dtag dtag-accent">Optimisation log</span>
+    </div>
+    <div>
+      <h4>Who is involved</h4>
+      <span class="dtag">Operations team</span>
+      <span class="dtag">Business owner</span>
+      <span class="dtag">IT support</span>
+      <span class="dtag">CEO / leadership</span>
+    </div>
+    <div>
+      <h4>Success KPIs to track</h4>
+      <span class="dtag dtag-accent">Time saved per week</span>
+      <span class="dtag dtag-accent">Error rate reduction</span>
+      <span class="dtag dtag-accent">Cost savings (Rs)</span>
+      <span class="dtag dtag-accent">ROI achieved vs projected</span>
+      <span class="dtag dtag-accent">Process uptime %</span>
+    </div>
+    <div>
+      <h4>Common blockers at this stage</h4>
+      <span class="dtag">No monitoring set up</span>
+      <span class="dtag">KPI not measured post-launch</span>
+      <span class="dtag">No owner after go-live</span>
+      <span class="dtag">No improvement process</span>
+    </div>
+  </div>
+</div>
+
+<!-- GOVERNANCE PRINCIPLES -->
+<div class="gov">
+  <div class="gov-title"><i class="ti ti-shield-check" style="font-size:14px;vertical-align:-2px;margin-right:5px" aria-hidden="true"></i>Governance principles &mdash; non-negotiable rules</div>
+  <div class="gov-grid">
+    <div class="gov-item"><span style="font-size:16px">🔒</span><p><strong>No discovery</strong> without Gate 1 approval</p></div>
+    <div class="gov-item"><span style="font-size:16px">⚙️</span><p><strong>No development</strong> without Gate 2 approval</p></div>
+    <div class="gov-item"><span style="font-size:16px">🔒</span><p><strong>No production</strong> without Gate 3 sign-off</p></div>
+    <div class="gov-item"><span style="font-size:16px">👤</span><p><strong>Every automation</strong> must have a business owner</p></div>
+    <div class="gov-item"><span style="font-size:16px">🎯</span><p><strong>Every automation</strong> must have measurable success criteria</p></div>
+    <div class="gov-item"><span style="font-size:16px">💰</span><p><strong>ROI must be measured</strong> and validated post-implementation</p></div>
+  </div>
+</div>
+</div>
+
+<script>
+const open=new Set();
+function toggleDetail(i){
+  const el=document.getElementById('d'+i);
+  const stage=document.querySelectorAll('.stage')[i];
+  if(open.has(i)){
+    el.classList.remove('open');
+    stage.setAttribute('aria-expanded','false');
+    open.delete(i);
+  } else {
+    el.classList.add('open');
+    stage.setAttribute('aria-expanded','true');
+    open.add(i);
+    el.scrollIntoView({behavior:'smooth',block:'nearest'});
+  }
+}
+function closeDetail(i){
+  document.getElementById('d'+i).classList.remove('open');
+  document.querySelectorAll('.stage')[i].setAttribute('aria-expanded','false');
+  open.delete(i);
+}
+document.querySelectorAll('.stage').forEach((s,i)=>{
+  s.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggleDetail(i);}});
+});
+</script>
+
+</body>
+</html>
